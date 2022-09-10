@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
   },
   feed: {
     flex: 1,
-    backgroundColor: '#00f'
   },
   post: {
     backgroundColor: '#fff',
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
   },
   postFooter: {
     height: 50,
-    backgroundColor: '#f0f',
+    backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center'
   },
