@@ -17,6 +17,7 @@ export default function App() {
           <Text>Pernalonga 1</Text>
         </View>
         <View style={styles.storie}>
+		
           <Image style={styles.imgStorie} source={require('./assets/imagens/pernalonga.png')} />
           <Text>Pernalonga 2</Text>
         </View>
