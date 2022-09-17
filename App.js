@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Constants from 'expo-constants';
 import Header from './components/Header';
 import Stories from './components/Stories';
@@ -9,9 +9,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Header/>
-      <Stories/>
-      <Feed/>
+      <Header />
+      <Stories />
+      <Feed />
     </View>
   );
 }
