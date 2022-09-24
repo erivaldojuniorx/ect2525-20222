@@ -1,0 +1,8 @@
+# criar app
+expo init my-app
+
+
+yarn add @react-navigation/native
+expo install react-native-screens react-native-safe-area-context
+yarn add @react-navigation/stack
+yarn add react-native-gesture-handler

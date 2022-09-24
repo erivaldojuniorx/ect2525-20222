@@ -1,66 +1,33 @@
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-
+import { useEffect, useState } from 'react';
 
 export default function Feed() {
 
-    const feed = [
-        {
-            id: 1,
-            nome: 'Pernalonga',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
-        {
-            id: 2,
-            nome: 'Pernalonga 2',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
-        {
-            id: 3,
-            nome: 'Pernalonga 3',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
-        {
-            id: 4,
-            nome: 'Pernalonga 4',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
-        {
-            id: 5,
-            nome: 'Pernalonga 5',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
-        {
-            id: 6,
-            nome: 'Pernalonga 6',
-            postHeaderImg: require('../assets/imagens/pernalonga.png'),
-            postImg: require('../assets/imagens/tiny-toon-adventures.jpg'),
-            aspectRatio: 1.778
-        },
+    const [feed, setFeed] = useState([]);
 
-    ];
+    useEffect(function(){
+        async function getData(){
+            const response = await fetch('https://mobile.ect.ufrn.br:3000/feed');
+            const feed = await response.json();
+            setFeed(feed);
+        }
+
+        getData();
+
+    }, []);
 
     function renderItem({ item }) {
         return (
             <View style={styles.post}>
                 <View style={styles.postHeader}>
                     <View style={styles.postHeaderLeft}>
-                        <Image style={styles.postHeaderImg} source={item.postHeaderImg} />
-                        <Text>{item.nome}</Text>
+                        <Image style={styles.postHeaderImg} source={{uri: item.imgPerfilUri}} />
+                        <Text>{item.nomeUsuario}</Text>
                     </View>
                     <FontAwesome5 name="ellipsis-h" size={16} color="black" />
                 </View>
-                <Image style={styles.postImg} aspectRatio={item.aspectRatio} source={item.postImg} />
+                <Image style={styles.postImg} aspectRatio={item.aspectRatio} source={{uri: item.imgPostUri}} />
                 <View style={styles.postFooter}>
                     <FontAwesome5 style={styles.postFooterIcon} name="heart" size={36} color="black" />
                     <FontAwesome5 style={styles.postFooterIcon} name="comment" size={36} color="black" />
